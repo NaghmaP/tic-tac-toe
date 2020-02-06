@@ -17,6 +17,7 @@ def printBoard(board):
     print("  "+board[4]+'|'+board[5]+'|'+board[6])
     print("  "+board[1]+'|'+board[2]+'|'+board[3])
     print("---------------")
+    
 def playerInput():
     marker=''
     while not (marker == 'X' or marker =='O'):
@@ -26,7 +27,6 @@ def playerInput():
     else:
         return ('O','X')
         
-
 def place_marker(board,marker,position):
     board[position]=' '+marker+' '
 
