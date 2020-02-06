@@ -13,7 +13,7 @@ TIC - TAC - TOE
 '''
 
 # Print board
-def printBoard(board):
+def print_board(board):
     print("---------------")
     print("  "+board[7]+'|'+board[8]+'|'+board[9])
     print("  "+board[4]+'|'+board[5]+'|'+board[6])
@@ -21,7 +21,7 @@ def printBoard(board):
     print("---------------")
     
 # Player 1 input for marker to start the game.
-def playerInput():
+def player_input():
     marker=''
     while not (marker == 'X' or marker =='O'):
         marker=input('Player 1: Do you want to be X or O? ').upper()
@@ -70,39 +70,37 @@ print("TIC - TAC - TOE")
 print("---------------")
 
 board=['   ']*10
-player1,player2=playerInput()
+player1,player2=player_input()
 win=False
 turn='P1'
 
 #Continue playing while no one wins or game is draw.
 while win==False:
     if turn =='P1':
-        printBoard(board)
+        print_board(board)
         position=player_choice(board)
         place_marker(board,player1,position)
-        count=+count
         turn='P2'
         if win_check(board,' '+player1+' '):
-            printBoard(board) 
+            print_board(board) 
             print('Player1 won!')
             win=True
         else:
             if board_full_check(board):
-                printBoard(board) 
+                print_board(board) 
                 print('Game is draw!')
                 win=True
     else:
-        printBoard(board)
+        print_board(board)
         position=player_choice(board)
         place_marker(board,player2,position)
-        count=+count
         turn='P1'
         if win_check(board,' '+player2+' '):
-            printBoard(board) 
+            print_board(board) 
             print('Player2 won!')
             win=True
         else:
             if board_full_check(board):
-                printBoard(board) 
+                print_board(board) 
                 print('Game is draw!')
                 win=True
