@@ -11,6 +11,8 @@ TIC - TAC - TOE
   1 | 2 | 3
 
 '''
+
+# Print board
 def printBoard(board):
     print("---------------")
     print("  "+board[7]+'|'+board[8]+'|'+board[9])
@@ -18,6 +20,7 @@ def printBoard(board):
     print("  "+board[1]+'|'+board[2]+'|'+board[3])
     print("---------------")
     
+# Player 1 input for marker to start the game.
 def playerInput():
     marker=''
     while not (marker == 'X' or marker =='O'):
@@ -26,13 +29,16 @@ def playerInput():
         return ('X','O')
     else:
         return ('O','X')
-        
+ 
+# Mark board with player's marker at given position
 def place_marker(board,marker,position):
     board[position]=' '+marker+' '
 
+# Check if the position is empty
 def space_check(board, position):
     return board[position] == '   '
     
+# Take player's input for marker's position and check if it is available.
 def player_choice(board):
     while True:
         pos=int(input('Enter position(1-9): '))
@@ -40,6 +46,7 @@ def player_choice(board):
             break;
     return pos
     
+# Win Condition
 def win_check(board,mark):
     return ((board[7] == mark and board[8] == mark and board[9] == mark) or # across the top
     (board[4] == mark and board[5] == mark and board[6] == mark) or # across the middle
@@ -50,6 +57,7 @@ def win_check(board,mark):
     (board[7] == mark and board[5] == mark and board[3] == mark) or # diagonal
     (board[9] == mark and board[5] == mark and board[1] == mark)) # diagonal
 
+# Check if board is full
 def board_full_check(board):
     for i in range(1,10):
         if space_check(board,i):
@@ -63,11 +71,10 @@ print("---------------")
 
 board=['   ']*10
 player1,player2=playerInput()
-
 win=False
 turn='P1'
 
-count=0
+#Continue playing while no one wins or game is draw.
 while win==False:
     if turn =='P1':
         printBoard(board)
@@ -99,4 +106,3 @@ while win==False:
                 printBoard(board) 
                 print('Game is draw!')
                 win=True
-    
